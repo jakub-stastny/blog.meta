@@ -7,15 +7,7 @@
 
 (my/info "Loading project-specific configuration.")
 
-(load-theme 'adwaita)
+(load-theme 'deeper-blue)
 
 ; Support for Evil mode movement in 3rd party packages, such as Magit.
 (evil-collection-init)
-
-(defun my/local/tangle-org-mode-files ()
-  (my/info "Running my/local/tangle-org-mode-files.")
-  (org-babel-tangle))
-
-(add-hook 'org-mode-hook
-  (lambda ()
-    (add-hook 'after-save-hook 'my/local/tangle-org-mode-files nil nil)))
