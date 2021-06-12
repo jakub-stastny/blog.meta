@@ -2,11 +2,11 @@
 
 Meta-repository explaining my blog architecture, decisions and linking related repositories.
 
-This repository itself does not contain any code, but rather serves as a wiki to all the related repositories.
+This repository itself does not contain any code, but rather /serves as a wiki/ to all the related repositories.
 
 * Project management
 
-This is the only repository that has GitHub issues enabled. If you want to raise an issue related to any of these projects, please do so here.
+This is the only repository that *has GitHub issues enabled*. If you want to raise an issue related to any of these projects, please do so here.
 
 * Components
 
@@ -51,23 +51,6 @@ Org mode format is used in the =body= field of the generated blog posts.
 It uses [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] compiled to WebAssembly in order to have a consistent parser output (by using different Org mode parsers we might run into incompatibilities, which is undesirable).
 
 Custom elements can be [[https://guide.elm-lang.org/interop/custom_elements.html][integrated into Elm]], which is how we make use of this in the [[https://github.com/jakub-stastny/blog.engine][blog.engine]].
-
-*** Example
-
-#+BEGIN_SRC html
-<article>
-  <h1>Hello world!</h1>
-  <p class="excerpt">
-    Let's blog again!
-  </p>
-
-  <org-mode>
-    * So what is it going to be about?
-
-    - Programming.
-    - Life.
-  </org-mode>
-#+END_SRC
 
 ** Repository [[https://github.com/jakub-stastny/blog.backend.contact-form][blog.backend.contact-form]]
 
