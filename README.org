@@ -4,9 +4,15 @@ Meta-repository explaining my blog architecture, decisions and linking related r
 
 This repository itself does not contain any code, but rather serves as a wiki to all the related repositories.
 
+* Project management
+
+This is the only repository that has GitHub issues enabled. If you want to raise an issue related to any of these projects, please do so here.
+
 * Components
 
 [[./doc/architecture.jpg]]
+
+# TODO: Describe the relationships better, this is just a starting point.
 
 ** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
 
@@ -51,10 +57,6 @@ Custom elements can be [[https://guide.elm-lang.org/interop/custom_elements.html
 ** Repository [[https://github.com/jakub-stastny/blog.backend.contact-form][blog.backend.contact-form]]
 
 A simple Erlang server that sends submission from the contact form.
-
-* Project management
-
-This is the only repository that has GitHub issues enabled. If you want to raise an issue related to any of these projects, please do so here.
 
 * Goals
 ** Learning and exploring
