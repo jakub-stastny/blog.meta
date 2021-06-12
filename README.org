@@ -29,7 +29,15 @@ Function =postToJSON= parses an Org mode file and generates a JSON file with =ti
 Function =bodyToHTML= parses post body (in the Org mode format) and generates HTML. This is being used in [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]].
 
 ** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
+
+This is THE data library of the ecosystem. It serialises and deserialises the post JSON and is being relied upon by the rest of the ecosystem: namely by the [[https://github.com/jakub-stastny/blog.engine][blog.engine]] and the [[https://github.com/jakub-stastny/blog.generator][blog.generator]].
+
 ** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
+
+The generator parses blog post entries from [[https://github.com/jakub-stastny/data.blog][data.blog]]'s =posts= directory using [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] and writes generated posts into the =output= directory using [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]].
+
+It checks that the version of [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] that's being used by the generator is the same as the one used on the live server, hence avoiding any potential incompatibilities and runtime issues.
+
 ** Repository [[https://github.com/jakub-stastny/data.blog][data.blog]]
 
 Contains blog posts written in the Org mode format (in the =posts= directory) as well as [[https://github.com/jakub-stastny/blog.generator][blog.generator]]-generated JSON files for the [[https://github.com/jakub-stastny/blog.engine][blog.engine]] (in the =output= directory).
