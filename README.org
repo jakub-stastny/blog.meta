@@ -1,9 +1,10 @@
 * About
 
-- blog.engine
-- blog.parser.post.org
-- blog.parser.post.json
-- blog.generator
+- [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
+- [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
+- [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
+- [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
+- [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]]
 
 * Goals
 ** Learning
