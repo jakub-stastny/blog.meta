@@ -1,10 +1,44 @@
 * About
 
-- [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
-- [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
-- [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
-- [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
-- [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]]
+* Components
+
+** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
+
+This is the actual blog engine written in Elm and Elm UI.
+
+It serves generated blog posts from the [[https://github.com/jakub-stastny/data.blog][data.blog]] repository.
+
+** Repository [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
+** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
+** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
+** Repository [[https://github.com/jakub-stastny/data.blog][data.blog]]
+
+Contains blog posts written in the Org mode format (in the =posts= directory) as well as [[https://github.com/jakub-stastny/blog.generator][blog.generator]]-generated JSON files for the [[https://github.com/jakub-stastny/blog.engine][blog.engine]] (in the =output= directory).
+
+** Repository [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]]
+
+Provides =org-mode= [[https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements][custom element]], which allows us to display Org mode formatted text as HTML.
+
+Org mode format is used in the =body= field of the generated blog posts.
+
+It uses [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] compiled to WebAssembly in order to have a consistent parser output (by using different Org mode parsers we might run into incompatibilities, which is undesirable).
+
+*** Example
+
+#+BEGIN_SRC html
+<article>
+  <h1>Hello world!</h1>
+  <p class="excerpt">
+    Let's blog again!
+  </p>
+
+  <org-mode>
+    * So what is it going to be about?
+
+    - Programming.
+    - Life.
+  </org-mode>
+#+END_SRC
 
 * Goals
 ** Learning
