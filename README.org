@@ -23,6 +23,8 @@ Org mode format is used in the =body= field of the generated blog posts.
 
 It uses [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] compiled to WebAssembly in order to have a consistent parser output (by using different Org mode parsers we might run into incompatibilities, which is undesirable).
 
+Custom elements can be [[https://guide.elm-lang.org/interop/custom_elements.html][integrated into Elm]], which is how we make use of this in the [[https://github.com/jakub-stastny/blog.engine][blog.engine]].
+
 *** Example
 
 #+BEGIN_SRC html
