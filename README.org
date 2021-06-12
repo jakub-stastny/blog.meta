@@ -12,8 +12,6 @@ This is the only repository that *has GitHub issues enabled*. If you want to rai
 
 [[./doc/architecture.jpg]]
 
-# TODO: Describe the relationships better, this is just a starting point.
-
 ** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
 
 This is the actual blog engine written in Elm and Elm UI.
@@ -96,3 +94,7 @@ It already supports tags out of the box and since it's an outliner, I hide all t
 ** TODO Update the per-project ZSH profile not to launch Emacs session
 
 And alias =e= simply to =emacs=, not forgetting to load =.env/emacs.el=.
+
+** TODO Improve =doc/architecture.jpg=
+
+Describe the relationships better, this is just a starting point.
