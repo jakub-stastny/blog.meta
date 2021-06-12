@@ -6,6 +6,8 @@ This repository itself does not contain any code, but rather serves as a wiki to
 
 * Components
 
+[[./doc/architecture.jpg]]
+
 ** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
 
 This is the actual blog engine written in Elm and Elm UI.
