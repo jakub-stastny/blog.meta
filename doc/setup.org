@@ -1,0 +1,16 @@
+* How to set up the repository?
+
+/This article is being linked from all my blog-related repositories./
+
+1. Open =.env/README.org= for literate DevOps instructions on setting the project.
+2. Use =C-c= to run a code block.
+
+** Shell setup
+
+TODO, for now, see =.env/zsh.zsh=.
+
+** Emacs setup
+
+# Note that this setup is more of an extension of dotfiles (and requires specific initialisation code which I have in [[https://github.com/jakub-stastny/dotfiles][my dotfiles]]), it doesn't deal with installing Elm and the dependencies, for which I use [[https://github.com/jakub-stastny/docker-project-manager][docker-project-manager]].
+
+TODO, for now, see =.env/emacs.el=.
