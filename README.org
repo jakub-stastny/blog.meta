@@ -99,4 +99,6 @@ And alias =e= simply to =emacs=, not forgetting to load =.env/emacs.el=.
 
 Describe the relationships better, this is just a starting point.
 
+After that, export the Procreate file (removing time lapse) and put it into the repository.
+
 ** TODO Improve =doc/setup.org=
