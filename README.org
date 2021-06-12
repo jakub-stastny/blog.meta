@@ -2,7 +2,7 @@
 
 Meta-repository explaining my blog architecture, decisions and linking related repositories.
 
-This repository itself does not contain any code, but rather /serves as a wiki/ to all the related repositories.
+This repository itself does not contain any code, but rather *serves as a wiki* to all the related repositories.
 
 * Project management
 
