@@ -1,5 +1,9 @@
 * About
 
+Meta-repository explaining my blog architecture, decisions and linking related repositories.
+
+This repository itself does not contain any code, but rather serves as a wiki to all the related repositories.
+
 * Components
 
 ** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
@@ -41,6 +45,10 @@ Custom elements can be [[https://guide.elm-lang.org/interop/custom_elements.html
     - Life.
   </org-mode>
 #+END_SRC
+
+* Project management
+
+This is the only repository that has GitHub issues enabled. If you want to raise an issue related to any of these projects, please do so here.
 
 * Goals
 ** Learning
