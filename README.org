@@ -69,11 +69,11 @@ In that regard what's most important to me is *no surprises*.
 
 I liked JavaScript before it was cool to like it. And for that reason I always ended up debugging incompatibilities in IE 6 and let me tell you, it wasn't much fun.
 
-So runtime errors are something I really dislike and especially on the front-end. So when Elm came out and says /"let there be no runtime errors"/, I was totally sold on it.
+So runtime errors are something I really dislike and especially on the front-end. So when Elm came out and says "/let there be no runtime errors/", I was totally sold on it.
 
 *** Data consistency
 
-But I went much further. Data manipulation is done exclusively by [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]. There's no /"it's just a simple JSON, let's just parse it"/. It's all done by this package and the rest of the ecosystem calls it for both serialisation and deserialisation.
+But I went much further. Data manipulation is done exclusively by [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]. There's no "/it's just a simple JSON, let's just parse it/". It's all done by this package and the rest of the ecosystem calls it for both serialisation and deserialisation.
 
 When [[https://github.com/jakub-stastny/blog.generator][blog.generator]] runs, it will ask the running front-end what version of [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] does it run. It will only proceed if it's running a compatible version (Elm does semantic versioning automatically, so we can't be wrong).
 
