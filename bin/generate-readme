@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+
+require 'erb'
+require 'yaml'
+
+unless ARGV.length == 1 && Dir.exist?(ARGV.first)
+  abort "Usage: #$0 [project-directory]"
+end
+
+PROJECT_ROOT   = ARGV.first
+README_PATH    = File.join(PROJECT_ROOT, "README.org")
+INFO_FILE_PATH = File.join(PROJECT_ROOT, "info.yml")
+META_REPO_PATH = File.expand_path("../..", __FILE__)
+README_TEMPLATE_PATH = File.join(META_REPO_PATH, "doc", "README-TEMPLATE.org.erb")
+
+unless File.exist?(INFO_FILE_PATH)
+  abort "File #{INFO_FILE_PATH} is missing"
+end
+
+INFO = YAML.load_stream(File.read(INFO_FILE_PATH))
+
+unless INFO.length == 2
+  abort <<~EOF
+    Two documents expected in #{INFO_FILE_PATH}, got #{INFO.length}.
+
+    The format should be as follows:
+
+      language: elm
+      ---
+
+      My blog engine written in Elm and Elm UI.
+
+    Info file: #{INFO.inspect}
+  EOF
+end
+
+context = {
+  project_name: File.basename(PROJECT_ROOT),
+  description: INFO[1],
+  language: INFO[0].fetch('language')
+}
+
+template = ERB.new(File.read(README_TEMPLATE_PATH))
+result = template.result_with_hash(context)
+
+puts "Generating with the following context:\n\n#{context.to_yaml.split("\n")[1..-1].join("\n")}"
+
+File.open(README_PATH, 'w') do |file|
+  file.puts(result)
+end
