@@ -21,6 +21,13 @@ This is the actual blog engine written in Elm and Elm UI.
 It serves generated blog posts from the [[https://github.com/jakub-stastny/data.blog][data.blog]] repository.
 
 ** Repository [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
+
+Exports =postToJSON= and =bodyToHTML=.
+
+Function =postToJSON= parses an Org mode file and generates a JSON file with =title=, =excerpt=, =body= and =published_timestamp=. This is being used in [[https://github.com/jakub-stastny/blog.generator][blog.generator]].
+
+Function =bodyToHTML= parses post body (in the Org mode format) and generates HTML. This is being used in [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]].
+
 ** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
 ** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
 ** Repository [[https://github.com/jakub-stastny/data.blog][data.blog]]
