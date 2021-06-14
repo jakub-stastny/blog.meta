@@ -1,0 +1,58 @@
+#!/usr/bin/env ruby
+
+require 'erb'
+require 'yaml'
+
+unless ARGV.length == 1 && Dir.exist?(ARGV.first)
+  abort "Usage: #$0 [project-directory]"
+end
+
+PROJECT_ROOT   = ARGV.first
+README_PATH    = File.join(PROJECT_ROOT, "README.org")
+META_FILE_PATH = File.join(PROJECT_ROOT, "meta.yml")
+INHERITED_PATH = File.expand_path("../..", __FILE__)
+README_TEMPLATE_PATH = File.join(INHERITED_PATH, "README-TEMPLATE.org.erb")
+
+unless File.exist?(META_FILE_PATH)
+  abort "File #{META_FILE_PATH} is missing"
+end
+
+meta_raw_data, full_description = File.read(META_FILE_PATH).split("\n---\n")
+meta = YAML.load(meta_raw_data).transform_keys(&:to_sym)
+
+context = meta.merge(
+  project_name: File.basename(PROJECT_ROOT),
+  full_description: full_description.strip,
+  description: meta[:description] || full_description.strip
+)
+
+unless context[:language]
+  abort "Headers must include language, for instance: language: Rust"
+end
+
+unless context[:description]
+  abort "Headers must include description, for instance: language: Rust"
+end
+
+unless context[:full_description]
+  abort "Headers must include full description, for instance: language: Rust"
+end
+
+template = ERB.new(File.read(README_TEMPLATE_PATH))
+result = template.result_with_hash(context).split("\n").map(&:rstrip).join("\n")
+
+puts <<~EOF
+  Generating with the following context:
+
+  project: #{`tput setaf 7`}#{context[:project_name]}#{`tput sgr0`}
+  language: #{`tput setaf 7`}#{context[:language]}#{`tput sgr0`}
+  description: #{`tput setaf 7`}#{context[:description]}#{`tput sgr0`}
+
+  And full description:
+
+  #{`tput setaf 7`}#{context[:full_description]}#{`tput sgr0`}
+EOF
+
+File.open(README_PATH, 'w') do |file|
+  file.puts(result)
+end
