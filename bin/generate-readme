@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require_relative '../inherit/lib/repo.rb'
+
+META_REPO_PATH = File.expand_path("../..", __FILE__)
+README_PATH    = File.join(META_REPO_PATH, "README.org")
+README_TEMPLATE_PATH = File.join(META_REPO_PATH, "README.org.erb")
+META_FILE_NAME = "meta.yml"
+
+repos = Dir.glob("../blog.*").map do |path|
+  next if File.basename(path) == File.basename(Dir.pwd)
+
+  Dir.chdir(path) do
+    repo = Repo.build(File.read(META_FILE_NAME), project_name: File.basename(Dir.pwd))
+    repo.tap(&:validate)
+  rescue Errno::ENOENT => error
+    abort "File #{META_FILE_NAME} not found in #{Dir.pwd}"
+  rescue ValidationError => error
+    abort error.message
+  end
+end.compact
+
+template = ERB.new(File.read(README_TEMPLATE_PATH))
+result = begin
+    template.result_with_hash(repos: repos)
+  rescue NoMethodError => error
+    abort <<~EOF
+      No such attribute: #{error.message.sub(/`(\w+)'/, '\1')}
+
+      Available attributes: #{repos[0].context.keys}
+      Available methods: #{repos[0].methods - Object.new.methods}
+    EOF
+  end.split("\n").map(&:rstrip).join("\n")
+
+File.open(README_PATH, 'w') do |file|
+  file.puts(result)
+end

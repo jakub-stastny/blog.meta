@@ -12,80 +12,12 @@ This is the only repository that *has GitHub issues enabled*. If you want to rai
 
 [[./doc/architecture.jpg]]
 
+<% repos.each do |repo| %>
+** Repository [[<%= repo.url %>][<%= repo.project_name %>]]
 
-** Repository [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]]
+<%= repo.description %>
 
-Provides org-mode custom element allowing us to display Org mode formatted text as HTML.
-
-
-** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
-
-My blog engine written in Elm and Elm UI.
-
-
-** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
-
-This is THE data library of the ecosystem. It serialises and deserialises the post JSON and is being relied upon by the rest of the ecosystem: namely by the [[https://github.com/jakub-stastny/blog.engine][blog.engine]] and the [[https://github.com/jakub-stastny/blog.generator][blog.generator]].
-
-
-** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
-
-The generator parses blog post entries from [[https://github.com/jakub-stastny/data.blog][data.blog]]'s =posts= directory using [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] and writes generated posts into the =output= directory using [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]].
-
-It checks that the version of [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] that's being used by the generator is the same as the one used on the live server, hence avoiding any potential incompatibilities and runtime issues.
-
-
-** Repository [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
-
-Parser of my blog post Org mode based format. It takes Org mode format as the input and gives JSON with fields =title=, =excerpt= and =body= as the output. It will also surface any top-level properties.
-
-My raw blog posts are available [[https://github.com/jakub-stastny/data.blog][here]], they can serve as an example of expected input.
-
-For =DATE=, see https://orgmode.org/manual/Export-Settings.html. We use the ISO 8601 standard for formatting it.
-
-** Format
-
-#+BEGIN_SRC org
-#+DATE: 2021-06-11T18:37:05+05:00
-
-* Blog post title
-
-This is the excerpt of the blog post.
-
-** First heading
-
-Content
-#+END_SRC
-
-#+BEGIN_SRC javascript
-// TODO: Make it a Rust example once I know how the smeg to program in it.
-import { postToJSON, bodyToHTML } from "jakub-stastny/blog.parser.org"
-
-const post = postToJSON(org_string, timezone)
-console.log(JSON.stringify(post))
-#+END_SRC
-
-#+BEGIN_SRC json
-{
-  "title": "Blog post title",
-  "excerpt": "This is the excerpt of the blog post.",
-  "body": "** First heading\n\nContent",
-  "published_timestamp": 1623454660
-}
-#+END_SRC
-
-Notice that the =body= is still Org mode formatted.
-
-Nothing is being exported to HTML, since we parse Org mode on the front-end as well. That's what the =bodyToHTML= function is for: just compile this package as a WebAssembly module and use it on both your back-end and your front-end!
-
-Published timestamp is unix epoch timestamp.
-
-
-** Repository [[https://github.com/jakub-stastny/blog.backend.contact-form][blog.backend.contact-form]]
-
-A simple Erlang server that sends submission from the contact form.
-
-
+<% end %>
 
 * Goals
 ** Learning and exploring

@@ -36,4 +36,17 @@ class Repo
     template = ERB.new(template_string)
     template.result_with_hash(context).split("\n").map(&:rstrip).join("\n")
   end
+
+  def url
+    "https://github.com/jakub-stastny/#{self.context.fetch(:project_name)}"
+  end
+
+  protected
+  def method_missing(method_name, *args, &block)
+    if self.context.has_key?(method_name)
+      self.context[method_name]
+    else
+      super(method_name, *args, &block)
+    end
+  end
 end
