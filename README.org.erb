@@ -12,7 +12,7 @@ This is the only repository that *has GitHub issues enabled*. If you want to rai
 
 [[./doc/architecture.jpg]]
 
-<% repos.each do |repo| %>
+<% repos.to_h.values.each do |repo| %>
 ** Repository [[<%= repo.url %>][<%= repo.project_name %>]] [[./doc/icons/<%= repo.language.downcase %>.png]]
 
 <%= repo.description %>
@@ -42,9 +42,9 @@ So runtime errors are something I really dislike and especially on the front-end
 
 *** Data consistency
 
-But I went much further. Data manipulation is done exclusively by [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]. There's no "/it's just a simple JSON, let's just parse it/". It's all done by this package and the rest of the ecosystem calls it for both serialisation and deserialisation.
+But I went much further. Data manipulation is done exclusively by [[<%= repos.blog_parser_post_json.url %>][<%= repos.blog_parser_post_json.project_name %>]]. There's no "/it's just a simple JSON, let's just parse it/". It's all done by this package and the rest of the ecosystem calls it for both serialisation and deserialisation.
 
-When [[https://github.com/jakub-stastny/blog.generator][blog.generator]] runs, it will ask the running front-end what version of [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] does it run. It will only proceed if it's running a compatible version (Elm does semantic versioning automatically, so we can't be wrong).
+When [[repos.blog_generator.url][repos.blog_generator.project_name]] runs, it will ask the running front-end what version of [[repos.blog_parser_post_json.url][repos.blog_parser_post_json.name]] does it run. It will only proceed if it's running a compatible version (Elm does semantic versioning automatically, so we can't be wrong).
 
 And finally we use the same Org mode parser throughout the ecosystem. If a post was successfully parsed in the generation phase, it must be successfully parsed on the front-end as well.
 

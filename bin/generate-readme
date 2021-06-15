@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'ostruct'
 require_relative '../inherit/lib/repo.rb'
 
 META_REPO_PATH = File.expand_path("../..", __FILE__)
@@ -7,18 +8,19 @@ README_PATH    = File.join(META_REPO_PATH, "README.org")
 README_TEMPLATE_PATH = File.join(META_REPO_PATH, "README.org.erb")
 META_FILE_NAME = "meta.yml"
 
-repos = Dir.glob("../blog.*").map do |path|
-  next if File.basename(path) == File.basename(Dir.pwd)
+repos = OpenStruct.new(Dir.glob("../blog.*").reduce(Hash.new) do |repos, path|
+  next repos if File.basename(path) == File.basename(Dir.pwd)
 
   Dir.chdir(path) do
     repo = Repo.build(File.read(META_FILE_NAME), project_name: File.basename(Dir.pwd))
     repo.tap(&:validate)
+    repos.merge(repo.project_name.tr('.', '_') => repo)
   rescue Errno::ENOENT => error
     abort "File #{META_FILE_NAME} not found in #{Dir.pwd}"
   rescue ValidationError => error
     abort error.message
   end
-end.compact
+end)
 
 # TODO: Sort repos manually, first blog.engine etc.
 #
