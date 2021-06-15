@@ -8,7 +8,7 @@ README_PATH    = File.join(META_REPO_PATH, "README.org")
 README_TEMPLATE_PATH = File.join(META_REPO_PATH, "README.org.erb")
 META_FILE_NAME = "meta.yml"
 
-repos = OpenStruct.new(Dir.glob("../blog.*").reduce(Hash.new) do |repos, path|
+repos = Dir.glob("../blog.*").reduce(Hash.new) do |repos, path|
   next repos if File.basename(path) == File.basename(Dir.pwd)
 
   Dir.chdir(path) do
@@ -20,18 +20,13 @@ repos = OpenStruct.new(Dir.glob("../blog.*").reduce(Hash.new) do |repos, path|
   rescue ValidationError => error
     abort error.message
   end
-end)
+end
 
-# TODO: Sort repos manually, first blog.engine etc.
-#
-# Use hash rather than list, repos.engine.project_name etc,
-# that way I can refere to them throughout the README.org.
-#
-# Probably best to use :priority/:sort_order in meta.yml.
+sorted_repos = repos.values.sort_by(&:sort_order)
 
 template = ERB.new(File.read(README_TEMPLATE_PATH))
 result = begin
-    template.result_with_hash(repos: repos)
+    template.result_with_hash(sorted_repos: sorted_repos, repos: OpenStruct.new(repos))
   rescue NoMethodError => error
     abort <<~EOF
       No such attribute: #{error.message.sub(/`(\w+)'/, '\1')}

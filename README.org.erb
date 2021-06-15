@@ -12,7 +12,7 @@ This is the only repository that *has GitHub issues enabled*. If you want to rai
 
 [[./doc/architecture.jpg]]
 
-<% repos.to_h.values.each do |repo| %>
+<% sorted_repos.each do |repo| %>
 ** Repository [[<%= repo.url %>][<%= repo.project_name %>]] [[./doc/icons/<%= repo.language.downcase %>.png]]
 
 <%= repo.description %>
