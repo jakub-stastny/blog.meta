@@ -13,29 +13,29 @@ This is the only repository that *has GitHub issues enabled*. If you want to rai
 [[./doc/architecture.jpg]]
 
 
-** Repository [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]]
+** Repository [[https://github.com/jakub-stastny/blog.custom-elements.org][blog.custom-elements.org]] [[./doc/icons/Deno.png]]
 
 Provides org-mode custom element allowing us to display Org mode formatted text as HTML.
 
 
-** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]]
+** Repository [[https://github.com/jakub-stastny/blog.engine][blog.engine]] [[./doc/icons/Elm.png]]
 
 My blog engine written in Elm and Elm UI.
 
 
-** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]]
+** Repository [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] [[./doc/icons/Elm.png]]
 
 This is THE data library of the ecosystem. It serialises and deserialises the post JSON and is being relied upon by the rest of the ecosystem: namely by the [[https://github.com/jakub-stastny/blog.engine][blog.engine]] and the [[https://github.com/jakub-stastny/blog.generator][blog.generator]].
 
 
-** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]]
+** Repository [[https://github.com/jakub-stastny/blog.generator][blog.generator]] [[./doc/icons/Deno.png]]
 
 The generator parses blog post entries from [[https://github.com/jakub-stastny/data.blog][data.blog]]'s =posts= directory using [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] and writes generated posts into the =output= directory using [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]].
 
 It checks that the version of [[https://github.com/jakub-stastny/blog.parser.post.json][blog.parser.post.json]] that's being used by the generator is the same as the one used on the live server, hence avoiding any potential incompatibilities and runtime issues.
 
 
-** Repository [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]]
+** Repository [[https://github.com/jakub-stastny/blog.parser.post.org][blog.parser.post.org]] [[./doc/icons/Rust.png]]
 
 Parser of my blog post Org mode based format. It takes Org mode format as the input and gives JSON with fields =title=, =excerpt= and =body= as the output. It will also surface any top-level properties.
 
@@ -81,7 +81,7 @@ Nothing is being exported to HTML, since we parse Org mode on the front-end as w
 Published timestamp is unix epoch timestamp.
 
 
-** Repository [[https://github.com/jakub-stastny/blog.backend.contact-form][blog.backend.contact-form]]
+** Repository [[https://github.com/jakub-stastny/blog.backend.contact-form][blog.backend.contact-form]] [[./doc/icons/Erlang.png]]
 
 A simple Erlang server that sends submission from the contact form.
 
