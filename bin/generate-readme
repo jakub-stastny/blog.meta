@@ -20,6 +20,13 @@ repos = Dir.glob("../blog.*").map do |path|
   end
 end.compact
 
+# TODO: Sort repos manually, first blog.engine etc.
+#
+# Use hash rather than list, repos.engine.project_name etc,
+# that way I can refere to them throughout the README.org.
+#
+# Probably best to use :priority/:sort_order in meta.yml.
+
 template = ERB.new(File.read(README_TEMPLATE_PATH))
 result = begin
     template.result_with_hash(repos: repos)
