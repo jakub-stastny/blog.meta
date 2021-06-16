@@ -124,10 +124,6 @@ I use Org mode for everything. It might look like Org mode is just a different v
 It already supports tags out of the box and since it's an outliner, I hide all the sections that are not relevant at the moment and only concentrate on the section at hand. There's an example of that in the [[./doc/literate-programming.org][literate programming]] article.
 
 * Pending matters
-** TODO Update the per-project ZSH profile not to launch Emacs session
-
-And alias =e= simply to =emacs=, not forgetting to load =.env/emacs.el=.
-
 ** TODO Improve =doc/architecture.jpg=
 
 Describe the relationships better, this is just a starting point.
